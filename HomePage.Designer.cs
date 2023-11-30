@@ -33,7 +33,7 @@ namespace LibrarySystem
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
-            this.searchBox1 = new LibrarySystem.SearchBox();
+            this.searchBox = new LibrarySystem.SearchBox();
             this.SuspendLayout();
             // 
             // button1
@@ -73,20 +73,19 @@ namespace LibrarySystem
             this.button4.Text = "button4";
             this.button4.UseVisualStyleBackColor = true;
             // 
-            // searchBox1
+            // searchBox
             // 
-            this.searchBox1.Location = new System.Drawing.Point(61, 288);
-            this.searchBox1.Name = "searchBox1";
-            this.searchBox1.Size = new System.Drawing.Size(513, 81);
-            this.searchBox1.TabIndex = 4;
-            this.searchBox1.Load += new System.EventHandler(this.searchBox1_Load);
+            this.searchBox.Location = new System.Drawing.Point(61, 288);
+            this.searchBox.Name = "searchBox";
+            this.searchBox.Size = new System.Drawing.Size(513, 81);
+            this.searchBox.TabIndex = 4;
             // 
             // HomePage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(635, 448);
-            this.Controls.Add(this.searchBox1);
+            this.Controls.Add(this.searchBox);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
@@ -105,6 +104,6 @@ namespace LibrarySystem
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button4;
-        private SearchBox searchBox1;
+        private SearchBox searchBox;
     }
 }

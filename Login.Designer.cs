@@ -67,6 +67,7 @@ namespace LibrarySystem
             this.UserNameText.Name = "UserNameText";
             this.UserNameText.Size = new System.Drawing.Size(252, 44);
             this.UserNameText.TabIndex = 2;
+            this.UserNameText.TextChanged += new System.EventHandler(this.UserNameText_TextChanged);
             // 
             // PasswordText
             // 
@@ -76,6 +77,8 @@ namespace LibrarySystem
             this.PasswordText.Name = "PasswordText";
             this.PasswordText.Size = new System.Drawing.Size(253, 44);
             this.PasswordText.TabIndex = 3;
+            this.PasswordText.UseSystemPasswordChar = true;
+            this.PasswordText.TextChanged += new System.EventHandler(this.PasswordText_TextChanged);
             // 
             // RegisterButton
             // 
@@ -114,7 +117,6 @@ namespace LibrarySystem
             this.MaximizeBox = false;
             this.Name = "LoginForm";
             this.Text = "Login";
-            this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

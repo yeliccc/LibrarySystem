@@ -1,45 +1,61 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Net.Http;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using Newtonsoft.Json;
 
 namespace LibrarySystem
 {
     public partial class LoginForm : Form
     {
-        public PublicOperations publicOperations = new PublicOperations(); // 包含一些公用操作以节省代码
+        string username;
+        string password;
+
         public LoginForm()
         {
             InitializeComponent();
+            this.StartPosition = FormStartPosition.CenterScreen;
         }
 
-        private void Form1_Load(object sender, EventArgs e)
-        {
-            //窗体加载时触发
-        }
-
-        private void LoginButton_Click(object sender, EventArgs e)
+        private async void LoginButton_Click(object sender, EventArgs e)
         {
             //点击Login时触发
-            HomePage homePage = new HomePage();
-            publicOperations.OpenForm(this, homePage); //注意，本程序使用Hide，其他时候应该close以节省内存
+            var values = new Dictionary<string, string>
+            {
+                {"username", username},
+                {"password", password},
+            };
+            Dictionary<string, string> result = await PublicOperations.NetWork("login", values);
+
+            if (result["status"] == "True")
+            {
+                HomePage homePage = new HomePage();
+                PublicOperations.OpenForm(this, homePage);
+            }
+            else
+            {
+                MessageBox.Show("Wrong Password!", "Login Failed", MessageBoxButtons.OK,MessageBoxIcon.Error);
+
+            }
+
 
         }
-    }
 
-    public class PublicOperations
-    {
-        public void OpenForm(Form currentForm, Form newForm)
+        private void UserNameText_TextChanged(object sender, EventArgs e)
         {
-            //打开其他窗口
-            newForm.StartPosition = FormStartPosition.CenterScreen;
-            newForm.Show();
-            currentForm.Hide();
+            username = UserNameText.Text;
+
+        }
+
+        private void PasswordText_TextChanged(object sender, EventArgs e)
+        {
+            password = PasswordText.Text;
+
         }
     }
+
+
 }
